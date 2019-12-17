@@ -1,0 +1,68 @@
+A region is a geographical area. It consists of 2 or more Availability zones
+Edge Locations are endpoints for AWS for caching Content.Typically this consists of cloudfront,Amazons Content Delivery Network.
+There are more EdgeLocations than regions.
+
+IAM
+
+Users:-End users such as employee in organisation
+Group:- Collection of users, will inherit all permision of a group
+Policies:- made up of document a spolicy document defines permissions what a user/group/role is able to document
+Role:- Assigned to set of specific AWS resources which is then applied to a user or a group.
+
+S3-Simple Storage Service- simple,scalabale,secured & durable for storing files(Object based storage)
+Files can be stored upto 5 TB
+Are stored in Buckets
+Stores as Key & value with version ID,metadata  & subresources(ACL)
+S3 Standard:- 99.99% available,99.99% durable,stored redundantly across multiple devices in multiple facilities & is designed to sustain the loss of 2 facilities concurently
+S3 IA-For data that is accessed less frequently, but requires rapid access when needed.Charged lesser than S3
+S3 One Zone Access-IA- Same as IA but available in onle one zone.Lower cost.
+S3 Intelligent Tiering-Designed to reduce cost by intelligently moving data to most cost-effective access tier without performance impact or operational overhead
+S3 Glacier- For data archiving,retrival times configurable from minutes to hours.
+S3 Glacier Deep archive, retrival times configurable of 12 hours acceptable.
+
+Dynamo DB:-
+No SQL, stored in SSD
+Spread across 3 geographically distinct data centers 
+Eventually consistent reads-best read performance
+Strong consistent reads
+
+
+AWS CloudFormation 
+It is a service that helps you model and set up your Amazon Web Services resources so that you can spend less time managing those resources 
+and more time focusing on your applications that run in AWS. 
+You create a template that describes all the AWS resources that you want (like Amazon EC2 instances or Amazon RDS DB instances), 
+and AWS CloudFormation takes care of provisioning and configuring those resources for you. 
+You don't need to individually create and configure AWS resources and figure out what's dependent on what;
+AWS CloudFormation handles all of that. The following scenarios demonstrate how AWS CloudFormation can help.
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "A sample template",
+  "Resources" : {
+    "MyEC2Instance" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+        "ImageId" : "ami-0ff8a91507f77f867",
+        "InstanceType" : "t2.micro",
+        "KeyName" : "testkey",
+        "BlockDeviceMappings" : [
+          {
+            "DeviceName" : "/dev/sdm",
+            "Ebs" : {
+              "VolumeType" : "io1",
+              "Iops" : "200",
+              "DeleteOnTermination" : "false",
+              "VolumeSize" : "20"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
+S3
+Amazon S3 Standard, S3 Standard-IA, and S3 Glacier storage classes redundantly store your objects on multiple devices 
+across a minimum of three Availability Zones (AZs) in an Amazon S3 Region before returning SUCCESS. 
+The S3 One Zone-IA storage class stores data redundantly across multiple devices within a single AZ.
+ These services are designed to sustain concurrent device failures by quickly detecting and repairing any lost redundancy,
+ and they also regularly verify the integrity of your data using checksums.
