@@ -12,14 +12,41 @@ Role:- Assigned to set of specific AWS resources which is then applied to a user
 S3-Simple Storage Service- simple,scalabale,secured & durable for storing files(Object based storage)
 Files can be stored upto 5 TB
 Are stored in Buckets
+Amazon S3 Standard, S3 Standard-IA, and S3 Glacier storage classes redundantly store your objects on multiple devices 
+across a minimum of three Availability Zones (AZs) in an Amazon S3 Region before returning SUCCESS. 
+Amazon S3 Standard, S3 Standard–IA, S3 One Zone-IA, and S3 Glacier are all designed to provide 99.999999999%
+The S3 One Zone-IA storage class stores data redundantly across multiple devices within a single AZ.
+These services are designed to sustain concurrent device failures by quickly detecting and repairing any lost redundancy,
+and they also regularly verify the integrity of your data using checksums.
 Stores as Key & value with version ID,metadata  & subresources(ACL)
 S3 Standard:- 99.99% available,99.99% durable,stored redundantly across multiple devices in multiple facilities & is designed to sustain the loss of 2 facilities concurently
 S3 IA-For data that is accessed less frequently, but requires rapid access when needed.Charged lesser than S3
 S3 One Zone Access-IA- Same as IA but available in onle one zone.Lower cost.
-S3 Intelligent Tiering-Designed to reduce cost by intelligently moving data to most cost-effective access tier without performance impact or operational overhead
+S3 Intelligent Tiering-Designed to reduce cost by intelligently moving data to most cost-effective access tier 
+   without performance impact or operational overhead
 S3 Glacier- For data archiving,retrival times configurable from minutes to hours.
 S3 Glacier Deep archive, retrival times configurable of 12 hours acceptable.
+You can use Lifecycle rules along with Versioning to implement a rollback window for your Amazon S3 objects. 
+For example, with your versioning-enabled bucket, you can set up a rule that archives all of your previous versions to the lower-cost Glacier 
+storage class and deletes them after 100 days, giving you a 100-day window to roll back any changes on your data while lowering your storage costs.
+Customers may use four mechanisms for controlling access to Amazon S3 resources:
+ Identity and Access Management (IAM) policies, bucket policies, Access Control Lists (ACLs), and Query String Authentication.
+ IAM enables organizations with multiple employees to create and manage multiple users under a single AWS account. 
+ With IAM policies, customers can grant IAM users fine-grained control to their Amazon S3 bucket or objects while also retaining full control 
+ over everything the users do. 
+ With bucket policies, customers can define rules which apply broadly across all requests to their Amazon S3 resources, 
+ such as granting write privileges to a subset of Amazon S3 resources. 
+ Customers can also restrict access based on an aspect of the request, such as HTTP referrer and IP address. 
+ With ACLs, customers can grant specific permissions (i.e. READ, WRITE, FULL_CONTROL) to specific users for an individual bucket or object.
+ With Query String Authentication, customers can create a URL to an Amazon S3 object which is only valid for a limited time.
 
+You can choose to encrypt data using SSE-S3, SSE-C, SSE-KMS, or a client library such as the Amazon S3 Encryption Client. 
+All four enable you to store sensitive data encrypted at rest in Amazon S3.
+
+There are four cost components to consider when deciding on which S3 storage class best fits your data profile – storage pricing, request and data retrieval pricing, data transfer and transfer acceleration pricing,
+ and data management features pricing.
+ 
+ 
 Dynamo DB:-
 No SQL, stored in SSD
 Spread across 3 geographically distinct data centers 
@@ -61,8 +88,3 @@ AWS CloudFormation handles all of that. The following scenarios demonstrate how 
 }
 
 S3
-Amazon S3 Standard, S3 Standard-IA, and S3 Glacier storage classes redundantly store your objects on multiple devices 
-across a minimum of three Availability Zones (AZs) in an Amazon S3 Region before returning SUCCESS. 
-The S3 One Zone-IA storage class stores data redundantly across multiple devices within a single AZ.
- These services are designed to sustain concurrent device failures by quickly detecting and repairing any lost redundancy,
- and they also regularly verify the integrity of your data using checksums.
