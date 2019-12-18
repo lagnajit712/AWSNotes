@@ -46,7 +46,29 @@ All four enable you to store sensitive data encrypted at rest in Amazon S3.
 There are four cost components to consider when deciding on which S3 storage class best fits your data profile – storage pricing, request and data retrieval pricing, data transfer and transfer acceleration pricing,
  and data management features pricing.
  
- 
+ Each S3 Access Point is configured with an access policy specific to a use case or application, and a bucket can have hundreds of access points.
+ For example, you can create an access point for your S3 bucket that grants access for groups of users or applications for your data lake. 
+ An Access Point could support a single user or application, or groups of users or applications, allowing separate management of each access point.
+ Each access point is associated with a single bucket and contains a network origin control, and a Block Public Access control.
+ For example, you can create an access point with a network origin control that only permits storage access from your Virtual Private Cloud, 
+ a logically isolated section of the AWS Cloud. You can also create an access point with the access point policy configured to 
+ only allow access to objects with a defined prefix, such as “finance”.
+
+Because each access point contains a unique DNS name, 
+you can now address existing and new buckets with any name of your choice that is unique within the AWS account and region. 
+Using access points that are restricted to a VPC, you can now have an easy, auditable way to make sure S3 data stays within your VPC. 
+
+There are two ways to get data into S3 Intelligent-Tiering. 
+You can directly PUT into S3 Intelligent-Tiering by specifying INTELLIGENT_TIERING in the x-amz-storage-class header 
+or set lifecycle policies to transition objects from S3 Standard or S3 Standard-IA to S3 INTELLIGENT_TIERING.
+
+S3 Standard-IA is ideal for data that is accessed less frequently, but requires rapid access when needed. 
+S3 Standard-IA is ideally suited for long-term file storage, older sync and share storage, and other aging data.
+
+
+
+
+
 Dynamo DB:-
 No SQL, stored in SSD
 Spread across 3 geographically distinct data centers 
