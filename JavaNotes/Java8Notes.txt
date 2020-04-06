@@ -1,0 +1,49 @@
+Functional interfaces are those interfaces that have only one abstract method in it. 
+It can have more than one default or static method and can override the method from java.lang.object. Let’s create a functional interface:
+
+@FunctionalInterface
+public interface Decorable {
+ 
+ // one abstract method
+ void decorateWithCurtains();
+ 
+ // default method
+ default void decorateWithPaints()
+ {
+  System.out.println("Decorating using paints");
+ }
+ 
+ // Overriding method of java.lang.Object
+ @Override
+ public int hashCode();
+ 
+}
+
+Some popular Functional Interfaces are:
+java.lang.Runnable
+java.util.concurrent.Callable
+java.awt.event.ActionListener
+java.util.Comparator
+
+(Argument List) ->{expression;} or
+(Argument List) ->{statements;}
+
+public class ThreadSample {
+ 
+ public static void main(String[] args) {
+  
+  // old way
+  new Thread(new Runnable() {
+   
+   @Override
+   public void run() {
+    System.out.println("Thread is started");
+   }
+  }).start();
+ 
+  // using lambda Expression
+  new Thread(()->System.out.println("Thread is started")).start();
+ }
+ 
+}
+ 

@@ -1,0 +1,8 @@
+1) What is AWS Lamda? How do you Debug AWS Lambda?
+2) What is the default number of buckets created in S3?
+3) Strategy or State Pattern?
+4) Memory leaks in Java?
+5) What is intermediate vs terminal operations?
+6) What are Functional interfaces?
+7) Find the common elements in 3 arrays of varying sizes?
+8) 
