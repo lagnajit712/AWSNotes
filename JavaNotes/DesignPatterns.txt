@@ -1,9 +1,14 @@
+Creational Patterns:-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Builder pattern aims to “Separate the construction of a complex object from its representation so that the same construction process can create different representations.”
 
+Singleton Pattern
 
+Abstract Factory 
 
+Prototype Pattern
 
-
+Factory Pattern
 
 
 Structural Patterns:-
@@ -25,8 +30,10 @@ The Bridge Pattern is also known as Handle or Body.
 Following participants constitute the bridge design pattern.
 Abstraction (abstract class) It defined the abstract interface i.e. behavior part. It also maintains the Implementer reference.
 RefinedAbstraction (normal class) It extends the interface defined by Abstraction.
-Implementer (interface) It defines the interface for implementation classes. This interface does not need to correspond directly to abstraction interface and can be very different. Abstraction imp provides an implementation in terms of operations provided by Implementer interface.
+Implementer (interface) It defines the interface for implementation classes. This interface does not need to correspond directly to abstraction interface and can be very different. 
+						Abstraction imp provides an implementation in terms of operations provided by Implementer interface.
 ConcreteImplementor (normal class)It implements the Implementer interface.
+Advantage :-
 	It enables the separation of implementation from the interface.
 	It improves the extensibility.
 	It allows the hiding of implementation details from the client.
@@ -82,3 +89,20 @@ We need to control the memory consumption by large number of objects – by crea
 A flyweight objects essentially has two kind of attributes – intrinsic and extrinsic.
 An intrinsic state attribute is stored/shared in the flyweight object, and it is independent of flyweight’s context. As the best practice, we should make intrinsic states immutable.
 An extrinsic state varies with flyweight’s context, which is why they cannot be shared. Client objects maintain the extrinsic state, and they need to pass this to a flyweight object during object creation.
+
+
+Simply, proxy means an object representing another object.
+According to GoF, a Proxy Pattern "provides the control for accessing the original object".
+So, we can perform many operations like hiding the information of original object, on demand loading etc.
+It can be used in Virtual Proxy scenario---Consider a situation where there is multiple database call to extract huge size image. Since this is an expensive operation so here we can use the proxy pattern which would create multiple proxies and point to the huge size memory consuming object for further processing. The real object gets created only when a client first requests/accesses the object and after that we can just refer to the proxy to reuse the object. This avoids duplication of the object and hence saving memory.
+It can be used in Protective Proxy scenario---It acts as an authorization layer to verify that whether the actual user has access the appropriate content or not. For example, a proxy server which provides restriction on internet access in office. Only the websites and contents which are valid will be allowed and the remaining ones will be blocked.
+It can be used in Remote Proxy scenario---A remote proxy can be thought about the stub in the RPC call. The remote proxy provides a local representation of the object which is present in the different address location. Another example can be providing interface for remote resources such as web service or REST resources.
+It can be used in Smart Proxy scenario---A smart proxy provides additional layer of security by interposing specific actions when the object is accessed. For example, to check whether the real object is locked or not before accessing it so that no other objects can change it.
+
+Behavioural Pattern :-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A Command Pattern says that "encapsulate a request under an object as a command and pass it to invoker object. Invoker object looks for the appropriate object which can handle this command and pass the command to the corresponding object and that object executes the command".
+It is also known as Action or Transaction.
+It separates the object that invokes the operation from the object that actually performs the operation.
+It makes easy to add new commands, because existing classes remain unchanged.
+
