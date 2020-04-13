@@ -1,0 +1,7 @@
+WellsFargo ROund 1:-
+1) Comparable vs Comparator
+2) Criteria for  deciding a framework & technical stack
+3) 3 things you would consider while designing any system from scratch
+4) Design principles used in your project like Event Sourcing or CQRS
+5) If in Spring configuration xml file we declare 2 bean id s but same class how many instances gets created?
+

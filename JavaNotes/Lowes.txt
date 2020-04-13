@@ -1,0 +1,12 @@
+Round 1:-
+----------------------------------------------
+1) What is Observer vs Pub Sub pattern
+2) How does ELK work internally?
+3) How does command pattern work?
+4) Explain about the current architecture and the patterns used in it?
+5) What is event sourcing & CQRS patterns? How does a DB sync in case of CQRS pattern?
+
+Round 2:-
+---------------------------------------------
+1) Write a recursive program in Java obtaining length of a string(without using length() inbuilt function)?
+2) Design a BookMyShow application. 
