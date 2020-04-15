@@ -1,0 +1,1 @@
+An annotation is a marker which associates information with a program construct, but has no effect at run time.

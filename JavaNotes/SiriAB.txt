@@ -1,0 +1,101 @@
+1) New feature sin Java 11
+		Java String Methods
+		isBlank() – This instance method returns a boolean value. Empty Strings and Strings with only white spaces are treated as blank.
+		strip() – Removes the white space from both the beginning and the end of the string.
+		repeat(int) –The repeat method repeats the string that many numbers of times as mentioned in the method in the form of an int.
+		Local-Variable Syntax for Lambda Parameters (JEP 323): JEP (323) allows var to be used to declare the formal parameters of an implicitly typed lambda expression.
+		Nested based Access Control: By using Java Reflection, it will give an IllegalStateException.Java 11 nested access control addresses this concern in reflection.
+		JEP 309: Dynamic Class-File Constants: The goal of this JEP is to reduce the cost and disruption of developing new forms of materializable class-file constraints.
+		JEP 318: Epsilon: A No-Op Garbage Collector: Unlike the JVM GC, which is responsible for allocating memory and releasing it, Epsilon only allocates memory.
+		JEP 320: Remove the Java EE and CORBA Modules:: The modules were already deprecated in Java 9. They are now completely removed.
+	
+2) JDK vs JVM Vs JRE
+
+		JVM (Java Virtual Machine) is an abstract machine. It is called a virtual machine because it doesn't physically exist. It is a specification that provides a runtime environment in which Java bytecode can be executed. It can also run those programs which are written in other languages and compiled to Java bytecode.
+		JVMs are available for many hardware and software platforms. JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However, Java is platform independent. There are three notions of the JVM: specification, implementation, and instance.
+		The JVM performs the following main tasks:
+		Loads code
+		Verifies code
+		Executes code
+		Provides runtime environment
+		JRE is an acronym for Java Runtime Environment. It is also written as Java RTE. The Java Runtime Environment is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It is the implementation of JVM. It physically exists. It contains a set of libraries + other files that JVM uses at runtime.
+		The implementation of JVM is also actively released by other companies besides Sun Micro Systems.
+		JDK is an acronym for Java Development Kit. The Java Development Kit (JDK) is a software development environment which is used to develop Java applications and applets. It physically exists. It contains JRE + development tools.
+		JDK is an implementation of any one of the below given Java Platforms released by Oracle Corporation:
+		Standard Edition Java Platform
+		Enterprise Edition Java Platform
+		Micro Edition Java Platform
+		The JDK contains a private Java Virtual Machine (JVM) and a few other resources such as an interpreter/loader (java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc), etc. to complete the development of a Java Application.
+
+3) String to Character and reverse
+		String.toArray() and new String(charArray)
+	
+4) How can a hashmap(employee,salary) be rearranged to sort based on salry in descending order :-
+		One difference between sorting HashMap by keys and values is that it can contain duplicate values by not duplicate keys. You cannot use TreeMap here because it only sort entries by keys. In this case you need to :
+		1 Get all entries by calling entrySet() method of Map
+		2 Create a custom Comparator to sort entries based upon values
+		3 Convert entry set to list
+		4 Sort entry list by using Collections.sort() method by passing your value comparator
+		5 Create a LinkedHashMap by adding entries in sorted order.
+
+5) @Component vs @Configuration
+		If you use @Configuration, all methods marked as @Bean will be wrapped into a CGLIB wrapper which works as if it’s the first call of this method, then the original method’s body will be executed and the resulting object will be registered in the spring context. All further calls just return the bean retrieved from the context.
+		@Component is a generic stereotype for any Spring-managed component or bean. 
+		@Repository is a stereotype for the persistence layer.
+		@Service is a stereotype for the service layer.
+		@Controller is a stereotype for the presentation layer (spring-MVC).
+		@Configuration Indicates that a class declares one or more @Bean methods and may be processed by the Spring container to generate bean definitions and service requests for those beans at runtime
+
+6) How can you retrieve a hashmap which is placed in application.properties?
+        Yes using @Value annotation and Splitterator
+		@Component
+		public class MyBean {
+
+			@Value("#{PropertySplitter.map('${service.expiration}')}")
+			Map<String, String> propertyAsMap;
+
+		}
+6) Builder Pattern
+		Builder pattern aims to “Separate the construction of a complex object from its representation so that the same construction process can create different representations.”
+		
+7) How to shift all 0s in an array to right?
+		import java.util.Arrays;
+
+class Util
+{
+	// Function to move all zeros present in the array to the end
+	public static void reorder(int[] A)
+	{
+		// k stores index of next available position
+		int k = 0;
+
+		// do for each element
+		for (int i: A)
+		{
+			// if current element is non-zero, put the element at
+			// next free position in the array
+			if (i != 0) {
+				A[k++] = i;
+			}
+		}
+
+		// move all 0's to the end of the array (remaining indices)
+		for (int i = k; i < A.length; i++) {
+			A[i] = 0;
+		}
+	}
+
+	// Move all zeros present in the array to the end
+	public static void main(String[] args)
+	{
+		int[] A = { 6, 0, 8, 2, 3, 0, 4, 0, 1 };
+
+		reorder(A);
+		System.out.println(Arrays.toString(A));
+	}
+}
+		
+8) How do you invoke AWS lamda from Spring boot?
+  
+
+
