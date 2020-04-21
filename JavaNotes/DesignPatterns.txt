@@ -101,8 +101,14 @@ It can be used in Smart Proxy scenario---A smart proxy provides additional layer
 
 Behavioural Pattern :-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-A Command Pattern says that "encapsulate a request under an object as a command and pass it to invoker object. Invoker object looks for the appropriate object which can handle this command and pass the command to the corresponding object and that object executes the command".
+A Command Pattern or Encapsulating Invocation says that "encapsulate a request under an object as a command and pass it to invoker object. Invoker object looks for the appropriate object which can handle this command and pass the command to the corresponding object and that object executes the command".
 It is also known as Action or Transaction.
 It separates the object that invokes the operation from the object that actually performs the operation.
 It makes easy to add new commands, because existing classes remain unchanged.
+
+A Strategy Pattern says that "defines a family of functionality, encapsulate each one, and make them interchangeable".
+The Strategy Pattern is also known as Policy.
+It provides a substitute to subclassing.
+It defines each behavior within its own class, eliminating the need for conditional statements.
+It makes it easier to extend and incorporate new behavior without changing the application.
 

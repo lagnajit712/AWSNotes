@@ -1,0 +1,38 @@
+The org.springframework.beans and org.springframework.context packages are the basis for Spring Framework’s IoC container. 
+The BeanFactory interface provides an advanced configuration mechanism capable of managing any type of object. 
+
+ApplicationContext is a sub-interface of BeanFactory. 
+It adds:
+	Easier integration with Spring’s AOP features
+	Message resource handling (for use in internationalization)
+	Event publication
+	Application-layer specific contexts such as the WebApplicationContext for use in web applications.
+	
+To interact with the container’s management of the bean lifecycle, you can implement the Spring InitializingBean and DisposableBean interfaces. 
+The container calls afterPropertiesSet() for the former and destroy() for the latter to let the bean perform certain actions upon 
+initialization and destruction of your beans.
+
+The org.springframework.beans.factory.InitializingBean interface lets a bean perform initialization work after the container has set all necessary properties on the bean. 
+The InitializingBean interface specifies a single method:
+void afterPropertiesSet() throws Exception;
+
+When an ApplicationContext creates an object instance that implements the org.springframework.context.ApplicationContextAware interface,
+ the instance is provided with a reference to that ApplicationContext.
+ The following listing shows the definition of the ApplicationContextAware interface:
+ public interface ApplicationContextAware {
+
+    void setApplicationContext(ApplicationContext applicationContext) throws BeansException;
+}
+Thus, beans can programmatically manipulate the ApplicationContext that created them, through the ApplicationContext interface 
+or by casting the reference to a known subclass of this interface (such as ConfigurableApplicationContext,
+ which exposes additional functionality). One use would be the programmatic retrieval of other beans. 
+ Sometimes this capability is useful. However, in general, you should avoid it, 
+ because it couples the code to Spring and does not follow the Inversion of Control style, 
+ where collaborators are provided to beans as properties. 
+ Other methods of the ApplicationContext provide access to file resources, publishing application events, and accessing a MessageSource.
+ 
+ @Autowired applies to fields, constructors, and multi-argument methods, 
+ allowing for narrowing through qualifier annotations at the parameter level. 
+ In contrast, @Resource is supported only for fields and bean property setter methods with a single argument. 
+ As a consequence, you should stick with qualifiers if your injection target is a constructor or a multi-argument method.
+ @Value is typically used to inject externalized properties:

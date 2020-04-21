@@ -1,0 +1,7 @@
+SOLID:-
+
+S- Single Responsibility Principle- One class should have only one responsibility
+O- Open Closed Principle- COmponents should be open for extension and closed for modification Eg:- Struts Action Servlet, Dispatcher Servlet in Spring
+L- Derived types must be completely substitutable for their base types- Custom Property Editor in Spring
+I- Interface Segregation Principle-Clients should not be forced to implement unnecessary methods which they will not use
+D- Dependency Inversion principle-Depend on abstractions, not on concretions eg-spring beans
