@@ -1,0 +1,78 @@
+Load Balancer Techniques
+
+There are numerous techniques and algorithms that can be used to intelligently load balance client access requests across server pools.
+The technique chosen will depend on the type of service or application being served and the status of the network and servers at the time of the request. 
+The methods outlined below will be used in combination to determine the best server to service new requests. 
+The current level of requests to the load balancers often determines which method is used. 
+When the load is low then one of the simple load balancing methods will suffice. 
+In times of high load, the more complex methods are used to ensure an even distribution of requests.
+
+Round Robin:-
+A simple method of load balancing servers. Multiple identical servers are configured to provide the same services.
+All are configured to use the same Internet domain name, but each has a unique IP address.
+A DNS server has a list of all the unique IP addresses that are associated with the Internet domain name.
+When requests for the IP Address associated with the Internet domain name are received, the addresses are returned in a rotating sequential manner.
+
+Weighted Round Robin:-
+Weighted Round Robin builds on the simple Round Robin load balancing method.
+In the weighted version, each server in the pool is given a static numerical weighting.
+Servers with higher ratings get more requests sent to them.
+
+Least Connection:-
+Neither Round Robin or Weighted Round Robin take the current server load into consideration when distributing requests.
+The Least Connection method does take the current server load into consideration.
+The current request goes to the server that is servicing the least number of active sessions at the current time.
+
+Weighted Least Connection:-
+Builds on the Least Connection method.
+Like in the Weighted Round Robin method each server is given a numerical value.
+The load balancer uses this when allocating requests to servers.
+If two servers have the same number of active connections, then the server with the higher weighting will be allocated the new request.
+
+Agent-Based Adaptive Load Balancing:-
+Each server in the pool has an agent that reports on its current load to the load balancer.
+This real-time information is used when deciding which server is best placed to handle a request.
+This is used in conjunction with other techniques such as Weighted Round Robin and Weighted Least Connection.
+
+Chained Failover (Fixed Weighted):-
+In this method, a predetermined order of servers is configured in a chain. All requests are sent to the first server in the chain.
+If it can’t accept any more requests the next server in the chain is sent all requests, then the third server. And so on.
+
+Weighted Response Time:-
+This method uses the response information from a server health check to determine the server that is responding fastest at a particular time.
+The next server access request is then sent to that server.
+This ensures that any servers that are under heavy load, and which will respond more slowly, are not sent new requests.
+This allows the load to even out on the available server pool over time.
+
+Source IP Hash:-
+This algorithm combines source and destination IP addresses of the client and server to generate a unique hash key.
+The key is used to allocate the client to a particular server.
+As the key can be regenerated if the session is broken, the client request is directed to the same server it was using previously.
+This is useful if it’s important that a client should connect to a session that is still active after a disconnection.
+For example, to retain items in a shopping cart between sessions.
+
+Layer 7 Content Switching:-
+Also known as URL Rewriting, this uses information from the application layer to augment lower level network switching operations.
+Application layer information about target services the data in the packets is intended for, can be used by load balancers to route the packets
+in real time to the server best suited to process them.
+
+Global Server Load Balancing (GSLB):-
+GSLB load balances DNS requests, not traffic.
+It uses algorithms such as round robin, weighted round robin, fixed weighting, real server load, location-based, proximity and all available.
+It offers High Availability through multiple data centers.
+If a primary site is down, traffic is diverted to a disaster recovery site.
+Clients connect to their fastest performing, geographically closest data center.
+Application health checking ensures unavailable services or data centers are not visible to clients.
+
+AD Group based traffic steering:-
+When users initiate client traffic it can be steered to individual Real Servers in a Virtual Service (VS) based on Active Directory (AD) group membership.
+For example, a VS has four Real Servers, with two Real Servers configured to have a primary association with AD Group 1 and two Real Servers configured
+to have a primary association with AD Group 2.
+A user attempts to access the VS, their group membership is verified, and their request steered to the appropriate Real Servers.
+If Real Servers selected based on group membership are unavailable, the assigned scheduling method for the VS is used.
+
+Software Defined Networking (SDN) Adaptive
+SDN Adaptive combines knowledge of upper networking layers, with information about the state of the network at lower layers.
+Information about data from Layers 4 & 7 of the network, and information about the network from layers 2 & 3 is combined when deciding how to allocate requests.
+This allows information about the status of the servers, the status of the applications running on them, the health of the network infrastructure,
+ and the level of congestion on the network to all play a part in the load balancing decision making.

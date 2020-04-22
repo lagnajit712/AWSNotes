@@ -1,0 +1,68 @@
+Spring Boot starters are a set of convenient dependency management providers which can be used in the application to enable dependencies. 
+These starters, make development easy and rapid. All the available starters come under the org.springframework.boot group.
+Few of the popular starters are as follows:
+spring-boot-starter: – This is the core starter and includes logging, auto-configuration support, and YAML.
+spring-boot-starter-jdbc – This starter is used for HikariCP connection pool with JDBC
+spring-boot-starter-web – Is the starter for building web applications, including RESTful, applications using Spring MVC
+spring-boot-starter-data-jpa – Is the starter to use Spring Data JPA with Hibernate
+spring-boot-starter-security – Is the starter used for Spring Security
+spring-boot-starter-aop: This starter is used for aspect-oriented programming with AspectJ and  Spring AOP
+spring-boot-starter-test: Is the starter for testing Spring Boot applications
+
+To create a custom endpoint in Spring Boot 2.x, you can use the @Endpoint annotation. 
+Spring Boot also exposes endpoints using @WebEndpointor, @WebEndpointExtension over HTTP with the help of Spring MVC, Jersey, etc.
+@SpringBootApplication	
+	Used in the main class or bootstrap class	
+	It is a combination of @Configuration, @ComponentScan and @EnableAutoConfiguration annotations.
+
+@EnableAutoConfiguration
+	Used to enable auto-configuration  and component scanning in your project
+	It is a combination of @Configuration and @ComponentScan annotations
+	
+To deploy a Spring Boot web application, you just have to add the following plugin in the pom.xml file:
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+</plugin>
+By using the above plugin, you will get a JAR executing the package phase. 
+This JAR will contain all the necessary libraries and dependencies required.
+It will also contain an embedded server. So, you can basically run the application like an ordinary JAR file.
+Note: The packaging element in the pom.xml file must be set to jar to build a JAR file as below:
+	  <packaging>jar</packaging>
+	  Similarly, if you want to build a WAR file, then you will mention
+      ]<packaging>war</packaging>
+
+A SpringApplication class has ApplicationListeners and ApplicationContextInitializers that are used to apply customizations to the context or environment.
+ Spring Boot loads a number of such customizations. It internally uses the META-INF/spring.factories.
+There are many ways to register additional customizations:
+I. Programmatically by calling the addListeners and addInitializers methods on SpringApplication before you run it.
+II. Declaratively by setting the context.initializer.classes or context.listener.classes in application.properties.
+III. Declaratively by adding a META-INF/spring.factories and adding jar files which application use as a library. This is used in custom auto configuretions.
+
+Actuators enable production-ready features without having to actually implement these things by yourself. Actuator endpoints are secured by default.
+Here are some of the common endpoints of Spring Boot
+/health — Shows application health information. It is often used by monitoring software to alert someone when a production system goes down.
+/info — Displays arbitrary application info
+/metrics — Shows ‘metrics’ information for the current application;
+/trace — Displays trace information
+/mappings — Displays a collated list of all @RequestMapping paths.
+
+Application events are sent in the following order, as your application runs:
+
+	An ApplicationStartingEvent is sent at the start of a run but before any processing, except for the registration of listeners and initializers.
+
+	An ApplicationEnvironmentPreparedEvent is sent when the Environment to be used in the context is known but before the context is created.
+
+	An ApplicationContextInitializedEvent is sent when the ApplicationContext is prepared and ApplicationContextInitializers have been called but before any bean definitions are loaded.
+
+	An ApplicationPreparedEvent is sent just before the refresh is started but after bean definitions have been loaded.
+
+	An ApplicationStartedEvent is sent after the context has been refreshed but before any application and command-line runners have been called.
+
+	An ApplicationReadyEvent is sent after any application and command-line runners have been called. It indicates that the application is ready to service requests.
+
+	An ApplicationFailedEvent is sent if there is an exception on startup
+	
+Since @Repository is a type of @Component, Spring also auto-scans and registers them.
+
+@Repository is a stereotype for the persistence layer. Its job is to catch all persistence related exceptions and rethrow them as a Spring DataAccessException.
