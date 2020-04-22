@@ -44,15 +44,15 @@ The next server access request is then sent to that server.
 This ensures that any servers that are under heavy load, and which will respond more slowly, are not sent new requests.
 This allows the load to even out on the available server pool over time.
 
-Source IP Hash:-
+Source IP Hash(Sticky Session):-
 This algorithm combines source and destination IP addresses of the client and server to generate a unique hash key.
 The key is used to allocate the client to a particular server.
 As the key can be regenerated if the session is broken, the client request is directed to the same server it was using previously.
 This is useful if it’s important that a client should connect to a session that is still active after a disconnection.
 For example, to retain items in a shopping cart between sessions.
 
-Layer 7 Content Switching:-
-Also known as URL Rewriting, this uses information from the application layer to augment lower level network switching operations.
+Layer 7 Content Switching(URL Rewriting):-
+This uses information from the application layer to augment lower level network switching operations.
 Application layer information about target services the data in the packets is intended for, can be used by load balancers to route the packets
 in real time to the server best suited to process them.
 
