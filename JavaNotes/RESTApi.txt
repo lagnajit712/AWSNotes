@@ -1,0 +1,201 @@
+List Of RESTful Web Services Question
+
+Q #1) What is your understanding of what are RESTful web services?
+
+Answer: Just like SOAP (Simple Object Access Protocol), which is used to develop web services by the XML method, RESTful web services use web protocol i.e. HTTP protocol method. They have the feature like scalability, maintainability, help multiple application communication built on various programming languages, etc.
+
+RESTful web service implementation defines the method of accessing various resources that are required by the client and he has sent the request to the server through the web browser.
+
+The important aspects of this implementation include:
+
+Resources
+Request Headers
+Request Body
+Response Body
+Status codes
+Q #2) Name the protocol which is used by RESTful web services.
+
+Answer: RESTful web services use a famous web protocol i.e. HTTP protocol. This serves as a medium of data communication between client and server. HTTP standard methods are used to access resources in RESTful web service architecture.
+
+Q #3) Explain the term ‘Addressing’ with respect to RESTful WEB service.
+
+Answer: Just like we require an address with postal code to reach any person, in the same way, ‘Addressing’ locates resources that are present on the server for the purpose of hosting web services. This is usually done with URI i.e. Unified Resource Identifier.
+
+Q #4) Enlist features of RESTful web services.
+
+Answer: Every RESTful web services should have the following features and characteristics that are enlisted below:
+
+Based on the Client-Server representation.
+Use of HTTP protocol for performing functions like fetching data from the web service, retrieving resources, execution of any query, etc.
+The communication between the server and client is performed through the medium known as ‘messaging’.
+Addressing of resources available on the server through URIs.
+Based on the concept of statelessness where every client request and the response is independent of the other with complete assurance of providing required information.
+Uses the concept of caching.
+Works on the Uniform interface.
+
+Q #5) Explain messaging technique.
+
+Answer: Messages are the mode of exchanging data for any type of communication to take place. In the same way, HTTP protocol plays the role of message communication between the client and server through HTTP Request and Response methods. HTTP request is sent by the client who contains information about the data and in turn, receives HTTP Response from the server.
+
+Messages are the collection of information about the data i.e. Metadata.
+
+Q #6) What are the core components of the HTTP request and HTTP response?
+
+Answer: The core components under HTTP Request are:
+
+Verb: Includes methods like GET, PUT, POST, etc.
+Uniform Resource Identifier for identifying the resources available on the server.
+HTTP Version for specifying the HTTP version.
+HTTP Request header for containing the information about the data.
+HTTP Request body that contains the representation of the resources in use.
+
+The core components under HTTP Response are:
+
+Request Code: This contains various codes that determine the status of the server response.
+HTTP Version for specifying the HTTP version.
+HTTP Response header for containing the information about the data.
+HTTP Response body that contains the representation of the resources in use.
+
+Q #7) Explain the term ‘Statelessness’ with respect to RESTful WEB service.
+
+Answer: In REST, ST itself defines State Transfer and Statelessness means complete isolation. This means, the state of the client’s application is never stored on the server and is passed on.
+
+In this process, the clients send all the information that is required for the server to fulfill the HTTP request that has been sent. Thus every client requests and the response is independent of the other with complete assurance of providing the required information.
+
+Every client passes a ‘session identifier’ which also acts as an identifier for each session.
+
+Q #8) Enlist advantages and disadvantages of ‘Statelessness’.
+
+Answer: In the above question, we have understood the meaning of statelessness with respect to client-server communication. Now, let us see some of its advantages and disadvantages.
+
+Advantages:
+
+Every method required for communication is identified as an independent method i.e. there are no dependencies to other methods.
+Any previous communication with the client and server is not maintained and thus the whole process is very much simplified.
+If any information or metadata used earlier in required in another method, then the client sends again that information with the HTTP request.
+The HTTP protocol and REST web service, both shares the feature of statelessness.
+Disadvantages:
+
+In every HTTP request from the client, the availability of some information regarding the client state is required by the web service.
+Q #9) Enlist some important constraints for RESTful web services.
+
+Answer: Every constraint has positive as well as negative impacts and to produce an overall architecture, there should be a balance between both of them.
+
+Below mentioned are some important constraints for RESTful web service:
+
+There should be separate concerns for each server and client which will help to maintain the modularity within the application. This will also reduce the complexity and increase the scalability.
+The client-server communication should be stateless, which means no previous information is used and the complete execution is done in isolation. In cases of failure, it also helps the client to recover.
+In client-server communication, the HTTP response should be cacheable so that when required cached copy can be used which in turn enhances the scalability and performance of the server.
+The fourth constraint is the uniform interface which allows client-server interaction to be easily understood. This constraint is further divided into four sub-constraints as:
+	Resource Identification
+	Resource Manipulation
+	Each message is easily understood and is self-descriptive.
+	Hypermedia, which is defined as the text with hyperlinks and when clicked, it moves to another application state.
+	
+Client-server communication should be done on a layered system and thus the client should only have knowledge about the intermediate level with which communication is being done,
+
+Q #10) What is a ‘Resource’?
+
+Answer: Just like the ‘Object’ instance, we have learned in Object Orient Programming Language, in the same way, ‘Resource’ is defined as an object of a type which can be an image, HTML file, text data, and any type of dynamic data. There are varieties of representation formats available in order to represent a resource.
+
+Some most common Resources are enlisted below:
+
+JSON
+YAML
+XML
+HTML
+
+Q #11) Why proper representation of Resource is required?
+
+Answer: Representation is very important because it determines the easy identification of resources. With proper representations of resource in the proper format, allows the client to easily understand the format.
+
+Q #12) Enlist some important points that should be kept in mind while designing Resources representation for RESTful web services.
+
+Answer: As there are no restrictions on the format in which the resource representation is done but just that the main requirement is the format of the representation should be as per the client requirement.
+
+A good resource representation is designed by considering the following main points:
+
+	The resource representation format should be easily understood by the client and server.
+	The representation should be complete regardless of its format structure, which may be complex or simple.
+	In the case of the link of the resources to other resources, such cases should also be considered and handled.
+	
+Q #13) What is Caching?
+
+Answer: Caching is the process in which server response is stored so that a cached copy can be used when required and there is no need for generating the same response again. This process not only reduces the server load but in turn increase the scalability and performance of the server. Only the client is able to cache the response and that too for a limited period of time.
+
+Mentioned below are the header of the resources and their brief description so that they can be identified for the caching process:
+
+	Time and date of resource creation
+	Time and date of resource modification that usually stores the last detail.
+	Cache-control header
+	Time and date at which the cached resource will expire.
+	The age which determines the time from when the resource has been fetched.
+	
+Q #14) Explain Cache-control header.
+	Answer: A standard Cache-control header can help in attaining cache ability. Enlisted below is the brief description of the various cache-control header:
+
+	Public: Resources that are marked as the public can be cached by any intermediate components between the client and the server.
+	Private: Resources that are marked as private can only be cached by the client.
+	No cache means that a particular resource cannot be cached and thus the whole process is stopped.
+Q #15) What are the best practices that are to be followed while designing RESTful web services?
+
+Answer: To design a secure RESTful web service, there are some best practices or say points that should be considered.
+
+These are explained as follows:
+
+	Every input on the server should be validated.
+	Input should be well-formed.
+	Never pass any sensitive data through URL.
+	For any session, the user should be authenticated.
+	Only HTTP error messages should be used for indicating any fault.
+	Use message format that is easily understood and is required by the client.
+	Unified Resource Identifier should be descriptive and easily understood.
+Q #16) What is Payload?
+
+Answer: The request data which is present in the body part of every HTTP message is referred to as ‘Payload’.  In Restful web service, the payload can only be passed to the recipient through the POST method.
+
+There is no limit of sending data as payload through the POST method but the only concern is that more data will consume more time and bandwidth. This may consume much of the user’s time also.
+
+Q #17) Enlist some of the HTTP methods with description.
+
+Answer: Enlisted below is the list of HTTP methods with their descriptions:
+
+GET: This is a read-only operation that fetches the list of users on the server.
+PUT: This operation is used for the creation of any new resource on the server.
+POST: This operation is used for updating an old resource or for creating a new resource.
+DELETE: As the name suggests, this operation is used for deleting any resource on the server.
+OPTIONS: This operation fetches the list of any supported options of resources that are available on the server.
+Q #18) What is the difference between the PUT method and the POST method?
+
+Answer: The major difference between the PUT and POST method is that the result generated with the PUT method is always the same no matter how many times the operation is performed. On the other hand, the result generated by POST operation is always different every time.
+
+Q #19) What is your understanding about JAX-RS?
+
+Answer: JAX-RS is defined as the Java API for RESTful web service. Among multiple libraries and framework, this is considered as the most suitable Java programming language based API which supports RESTful web service.
+
+Some of the implementations of JAX-RS are:
+
+Jersey
+RESTEasy
+Apache CFX
+Play
+Among these, Jersey is the most popular framework.
+
+Q #20) What are HTTP status codes? Enlist few with meaning.
+
+Answer: HTTP status codes basically are the representation of the status of the task that has been performed on the server, with the mode of some codes. Every code has their own meaning.
+
+Some of the HTTP status codes with their meaning are as follows:
+
+Code 200: This indicates success.
+Code 201: This indicates resource has been successfully created.
+Code 204: This indicates that there is no content in the response body.
+Code 404: This indicates that there is no method available.
+There are few more such codes that indicate the status.
+
+Q #21) What are idempotent operations? Why is idempotency important?
+
+There are some HTTP methods e.g. GET which produce same response no matter how many times you use them e.g. sending multiple GET request to the same URI will result in same response without any side-effect hence it is known as idempotent.
+
+On the other hand, the POST is not idempotent because if you send multiple POST requests, it will result in multiple resource creation on the server, but again, PUT is idempotent if you are using it to update the resource.
+
