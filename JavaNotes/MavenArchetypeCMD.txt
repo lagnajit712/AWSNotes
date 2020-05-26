@@ -1,0 +1,31 @@
+mvn archetype:generate -DarchetypeGroupId=com.baeldung.archetypes
+                       -DarchetypeArtifactId=maven-archetype
+                       -DarchetypeVersion=1.0-SNAPSHOT
+                       -DgroupId=com.baeldung.restful
+                       -DartifactId=cool-jaxrs-sample
+                       -Dversion=1.0-SNAPSHOT
+					   
+					   
+mvn archetype:generate \
+    -DarchetypeCatalog=http://maven.srv.volvo.com:8081/nexus/content/repositories/vgt-public \
+    -DarchetypeGroupId=com.wirelesscar.opus.archetypes \
+    -DarchetypeArtifactId=opus-archetype-component-client \
+    -DarchetypeVersion=LATEST \
+    -DgroupId=com.wirelesscar.<component-short-name> \
+    -DartifactId=<component-long-name>-client \
+    -Ddomain-team=<Owner team identifier> \
+    -Dcomponent-short-name=<component-short-name> \
+    -Dcomponent-long-name=<component-long-name>
+	
+	
+	mvn archetype:generate -DarchetypeGroupId=com.lamo.archtypes -DarchetypeArtifactId=microservice-component-server -DarchetypeVersion=0-SNAPSHOT -DgroupId=com.xyz.msf.itrepo -DartifactId=item-repo-server -Dcomponent-short-name=itrepo -Dcomponent-long-name=item-repo -Dport=12345
+	
+	mvn archetype:generate -DarchetypeGroupId=com.organization.project -DarchetypeArtifactId=project-name-archetype -DarchetypeVersion=0.0.2-SNAPSHOT -DgroupId=com.xyz.msf.testrepo -DartifactId=test-repo-server -Dcomponent-short-name=testrepo -Dcomponent-long-name=test-repo -Dport=12345
+	
+	mvn archetype:generate -DarchetypeGroupId=com.lamo.archtypes -DarchetypeArtifactId=microservice-component-server -DarchetypeVersion=0-SNAPSHOT -DgroupId=com.organisation.platform.xyz -DartifactId=xyz-server -Dpackage=com.organisation.platform.xyz.xy -Dcomponent-short-name=xy -Dcomponent-long-name=xyz -Dport=12345
+
+
+	FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+	E5CF9BDCF9DD72E57350AFC8369B1D40
+	
+	mvn -U archetype:generate -DarchetypeGroupId=com.wirelesscar.opus.archetypes -DarchetypeArtifactId=opus-archetype-component-server-springboot -DarchetypeVersion=LATEST    -DgroupId=com.wirelesscar.temp -DartifactId=temporary-server -Ddomain-team=VehicleUtilization -Dcomponent-short-name=temp -Dcomponent-long-name=temporary -Dport=33221     -Dgui-option=Y -Djms-publish-option=Y -Djms-subscribe-option=Y -Drest-endpoint-option=Y -Dsqldb-option=Y

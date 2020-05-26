@@ -1,0 +1,102 @@
+
+In concurrent programming, there are two basic units of execution: processes and threads. 
+In the Java programming language, concurrent programming is mostly concerned with threads. However, processes are also important.
+
+A computer system normally has many active processes and threads.
+This is true even in systems that only have a single execution core, and thus only have one thread actually executing at any given moment.
+Processing time for a single core is shared among processes and threads through an OS feature called time slicing.
+
+It's becoming more and more common for computer systems to have multiple processors or processors with multiple execution cores.
+This greatly enhances a system's capacity for concurrent execution of processes and threads — but concurrency is possible even on simple systems,
+without multiple processors or execution cores.
+
+Processes
+A process has a self-contained execution environment.
+A process generally has a complete, private set of basic run-time resources; in particular, each process has its own memory space.
+
+Processes are often seen as synonymous with programs or applications.
+However, what the user sees as a single application may in fact be a set of cooperating processes.
+To facilitate communication between processes, most operating systems support Inter Process Communication (IPC) resources, such as pipes and sockets.
+IPC is used not just for communication between processes on the same system, but processes on different systems.
+
+Most implementations of the Java virtual machine run as a single process.
+A Java application can create additional processes using a ProcessBuilder object.
+Multiprocess applications are beyond the scope of this lesson.
+
+Threads
+Threads are sometimes called lightweight processes.
+Both processes and threads provide an execution environment, but creating a new thread requires fewer resources than creating a new process.
+
+Threads exist within a process — every process has at least one.
+Threads share the process's resources, including memory and open files.
+This makes for efficient, but potentially problematic, communication.
+
+Multithreaded execution is an essential feature of the Java platform.
+Every application has at least one thread — or several, if you count "system" threads that do things like memory management and signal handling.
+But from the application programmer's point of view, you start with just one thread, called the main thread.
+This thread has the ability to create additional threads, as we'll demonstrate in the next section.
+
+2 ways to implement Threads
+ 1) Implement runnable interface and make a call to start
+ 2) Extend Thread and write run() method which should be executed .
+ 
+Thread.sleep causes the current thread to suspend execution for a specified period.
+This is an efficient means of making processor time available to the other threads of an application or other applications that might be
+running on a computer system. 
+An interrupt is an indication to a thread that it should stop what it is doing and do something else.
+It's up to the programmer to decide exactly how a thread responds to an interrupt, but it is very common for the thread to terminate.
+This is the usage emphasized in this lesson.
+The join method allows one thread to wait for the completion of another. 
+If t is a Thread object whose thread is currently executing,t.join();causes the current thread to pause execution until t's thread terminates.
+Overloads of join allow the programmer to specify a waiting period.
+However, as with sleep, join is dependent on the OS for timing, so you should not assume that join will wait exactly as long as you specify.
+
+Threads communicate primarily by sharing access to fields and the objects reference fields refer to.
+This form of communication is extremely efficient, but makes two kinds of errors possible: thread interference and memory consistency errors.
+The tool needed to prevent these errors is synchronization.
+
+Synchronized methods enable a simple strategy for preventing thread interference and memory consistency errors:
+if an object is visible to more than one thread, all reads or writes to that object's variables are done through synchronized methods.
+(An important exception: final fields, which cannot be modified after the object is constructed, can be safely read through non-synchronized methods,
+once the object is constructed) 
+
+Synchronization is built around an internal entity known as the intrinsic lock or monitor lock.
+(The API specification often refers to this entity simply as a "monitor.") Intrinsic locks play a role in both aspects of synchronization:
+ enforcing exclusive access to an object's state and establishing happens-before relationships that are essential to visibility.
+Every object has an intrinsic lock associated with it.
+By convention, a thread that needs exclusive and consistent access to an object's fields has to acquire the object's intrinsic lock before accessing them,
+and then release the intrinsic lock when it's done with them. A thread is said to own the intrinsic lock between the time
+ it has acquired the lock and released the lock. As long as a thread owns an intrinsic lock, no other thread can acquire the same lock.
+The other thread will block when it attempts to acquire the lock.
+
+When a thread releases an intrinsic lock, a happens-before relationship is established between that action and any subsequent acquisition of the same lock.
+
+You might wonder what happens when a static synchronized method is invoked, since a static method is associated with a class, not an object.
+In this case, the thread acquires the intrinsic lock for the Class object associated with the class.
+Thus access to class's static fields is controlled by a lock that's distinct from the lock for any instance of the class.
+
+You might wonder what happens when a static synchronized method is invoked, since a static method is associated with a class, not an object.
+In this case, the thread acquires the intrinsic lock for the Class object associated with the class.
+Thus access to class's static fields is controlled by a lock that's distinct from the lock for any instance of the class.
+
+In programming, an atomic action is one that effectively happens all at once.
+An atomic action cannot stop in the middle: it either happens completely, or it doesn't happen at all.
+No side effects of an atomic action are visible until the action is complete.
+
+We have already seen that an increment expression, such as c++, does not describe an atomic action.
+Even very simple expressions can define complex actions that can decompose into other actions.
+However, there are actions you can specify that are atomic:
+
+Reads and writes are atomic for reference variables and for most primitive variables (all types except long and double).
+Reads and writes are atomic for all variables declared volatile (including long and double variables).
+Atomic actions cannot be interleaved, so they can be used without fear of thread interference.
+However, this does not eliminate all need to synchronize atomic actions, because memory consistency errors are still possible.
+Using volatile variables reduces the risk of memory consistency errors,
+because any write to a volatile variable establishes a happens-before relationship with subsequent reads of that same variable.
+This means that changes to a volatile variable are always visible to other threads.
+What's more, it also means that when a thread reads a volatile variable, it sees not just the latest change to the volatile,
+but also the side effects of the code that led up the change.
+
+A concurrent application's ability to execute in a timely manner is known as its liveness.
+An object is considered immutable if its state cannot change after it is constructed.
+Maximum reliance on immutable objects is widely accepted as a sound strategy for creating simple, reliable code.

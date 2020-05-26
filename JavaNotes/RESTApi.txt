@@ -198,4 +198,12 @@ Q #21) What are idempotent operations? Why is idempotency important?
 There are some HTTP methods e.g. GET which produce same response no matter how many times you use them e.g. sending multiple GET request to the same URI will result in same response without any side-effect hence it is known as idempotent.
 
 On the other hand, the POST is not idempotent because if you send multiple POST requests, it will result in multiple resource creation on the server, but again, PUT is idempotent if you are using it to update the resource.
+Security Threats to Rest APIs:-
 
+Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in 
+which they’re currently authenticated.
+CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request.
+With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into 
+executing actions of the attacker’s choosing. 
+If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, 
+changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application.
