@@ -1,0 +1,72 @@
+Virtual Private Cloud 
+	1) Logically isolated network in the AWS cloud
+	2) Control of n/w architecture
+	3) Enhanced security with VPC, with Security groups can restrict access to resources like EC2 ,etc. 
+	   It also has a NACL where we can configure the network coming in and going out.
+	4) Internetwork with other organisations
+	5) Elastic Ip address(aka public IPs)
+	6) Enable Hybrid cloud
+	7) Single dedicated hardware nw
+
+	VPC cost is 0 but VPN costs
+	The following are the key concepts for VPCs:
+		• Virtual private cloud (VPC) — A virtual network dedicated to your AWS account.
+		• Subnet — A range of IP addresses in your VPC.
+		• Route table — A set of rules, called routes, that are used to determine where network traﬃc is
+			directed.
+		• Internet gateway — A gateway that you attach to your VPC to enable communication between
+			resources in your VPC and the internet.
+		• VPC endpoint — Enables you to privately connect your VPC to supported AWS services and VPC
+			endpoint services powered by PrivateLink without requiring an internet gateway, NAT device, VPN
+			connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP
+			addresses to communicate with resources in the service. Traﬃc between your VPC and the other
+			service does not leave the Amazon network.
+
+	There's no additional charge for using Amazon VPC. You pay the standard rates for the instances and	other Amazon EC2 features that you use.
+	There are charges for using a Site-to-Site VPN connection,PrivateLink, Traﬃc Mirroring, and a NAT gateway.
+	There will be data transfer charge between your NAT Gateway and EC2 instance if they are in the different availability zone.
+VPC Elements:-
+
+		1) Subnet (private Subnet, public subnet and VPN subnet)
+		2)  Route Tables
+		3) Internet gateways
+		4) Elastic IPs
+		5) Endpoints(eg direct traffic to S3 directly)
+		6) NAT Gateway 
+		7) Peering connection
+		8) Network ACL
+		9) Security Groups
+		10) VPN
+
+VPC Characteristics:-
+		1) AWS reserves 5 ip address per subnet(first 4 and last 1)
+		2) Subnets do not span AZs
+		3) Single region , multi AZ
+		4) CIDR 16-28
+		5) Select IP prefix( 192.168 or 10.0 or 172.0...)
+When you create a VPC, you must specify a range of IPv4 addresses for the VPC in the form of a Classless Inter-Domain Routing (CIDR) block;
+ for example, 10.0.0.0/16. This is the primary CIDR block for your VPC.
+ For more information about CIDR notation, see RFC 4632.
+ 
+Understanding NAT Instances ,Gateways and VPC End Points
+
+VPC Peering
+ Various VPC across various region can peer(connection) with each other and this mechanism is provided by AWS.
+ There is no transitive peering.
+ 50 VPC peer are provided by default per VPC and can be raised to 125 VPC.
+ DNS is supported in VPC.
+ Use route tables to configure routing among VPC.
+ Update Inbound and Outbound rules for your VPC security groups to reference security groups in the peered VPC.
+ 
+VPC Access
+
+AWS Direct Connect
+	Predictable Bandwidth
+	Predictable Performance/consistent network experience
+	1Gbps or 10Gbps
+	For less than 1Gbps connection through AWS partner network(APN)
+	Support for VLAN Trunking
+	Direct Connect can be partitioned into multiple virtual interfaces.
+ 
+
+
