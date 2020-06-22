@@ -1,0 +1,37 @@
+EC2--
+Reserved  - Lower hourly rate
+	Standard  - U can power on your instance
+	Scheduled - Durable within that timeframe
+	
+	Can switch availability zones in same region.
+	Same the instance size in instance type only for Linux.
+	
+Spot - Instances assigned at lower rate based on bidding
+Dedicated
+	Host- 
+	Instance-
+
+OnDemand -  Low cost and flexibility with no up front cost
+           Ideal for auto scaling groups and unpredictable loads
+		   
+Reserved:-
+           Steady state and predictable usage
+		   Application that need reserved capacity.
+		   Upfront payment reduce hourly rate
+Spot     :- 
+           Flexible start and end times
+		   Grid Computing and HPC
+		   Very low hourly compute cost
+Dedicated:-
+           Predictable performance
+		   Complete Isolation
+		   Most Expensive
+
+Placement Group:-
+         Logically grouped instances in a single availability zone.
+		 Existing instances cannot be moved into a placement grouped
+		 Only instance types with enhanced nw support placement group like m4,c3,etc
+		 They cannot be merged.
+		 Can span peered VPCs but u will not get full-bisection bandwidth between instances.
+		 Reserved instances are supported at instance level but you cannot explicitly reserve capacity for a placement group.
+		   
